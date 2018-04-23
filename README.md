@@ -1,2 +1,2 @@
-# docker-profftpd
+# docker-proftpd
 FTPS SFTP
