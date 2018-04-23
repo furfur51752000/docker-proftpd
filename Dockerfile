@@ -6,8 +6,8 @@ RUN apt-get -y update && \
 
 # copy the file - openssl
 RUN mkdir /etc/proftpd/ssl
-COPY proftpd.cert.pem /etc/proftpd/ssl/
-	 proftpd.key.pem /etc/proftpd/ssl/
+COPY cert/proftpd.cert.pem /etc/proftpd/ssl/
+	 cert/proftpd.key.pem /etc/proftpd/ssl/
 RUN chmod 600 proftpd.*
 
 # copy the file - proftpd config
