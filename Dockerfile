@@ -13,7 +13,7 @@ RUN mkdir /etc/proftpd/ssl && \
 COPY *.conf /etc/proftpd/
 
 # add user
-RUN useradd -m -d /home/ftpusert -s /bin/false ftpuser && \
+RUN useradd -m -d /home/ftpuser -s /bin/false ftpuser && \
 	echo 'ftpuser:ftppass' | /usr/sbin/chpasswd
 
 EXPOSE 21
