@@ -6,20 +6,14 @@ RUN apt-get -y update && \
 
 # copy the file - openssl
 RUN mkdir /etc/proftpd/ssl
-COPY cert/proftpd.cert.pem /etc/proftpd/ssl/
-	 cert/proftpd.key.pem /etc/proftpd/ssl/
-RUN chmod 600 proftpd.*
+COPY cert/proftpd.* /etc/proftpd/ssl/
+RUN chmod 600 /etc/proftpd/ssl/proftpd.*
 
 # copy the file - proftpd config
-COPY proftpd.conf /etc/proftpd/
-	 tls.conf /etc/proftpd/
+COPY *.conf /etc/proftpd/
 
 # add user
-RUN useradd -m -d /home/ftpusertest -s /bin/false ftpusertest
-	echo ftpuser:ftppass | /usr/sbin/chpasswd
-
-# start the service
-RUN systemctl restart proftpd.service
-	systemctl enable proftpd.service
+RUN useradd -m -d /home/ftpusert -s /bin/false ftpuser && \
+	echo 'ftpuser:ftppass' | /usr/sbin/chpasswd
 
 EXPOSE 21
