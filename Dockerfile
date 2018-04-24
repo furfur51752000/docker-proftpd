@@ -16,4 +16,7 @@ COPY *.conf /etc/proftpd/
 RUN useradd -m -d /home/ftpuser -s /bin/false ftpuser && \
 	echo 'ftpuser:ftppass' | /usr/sbin/chpasswd
 
+# start the service
+CMD proftpd start 
+
 EXPOSE 21
